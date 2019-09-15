@@ -1,0 +1,44 @@
+<div class="container py-5 mt-5">
+    <div class="card">
+      <div class="container py-3">
+        <h5 class="titulo1 "><i class="icon-airplane"></i> Viajes</h5>
+  
+      <hr class="hr">
+      
+      <div class="row">
+        <div class="col-md-2">
+          <button routerLink="/viajes-form" class="btn btn-primary">Nuevo Registro</button>
+        </div>
+      </div>
+  
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Codigo</th>
+          <th scope="col">N° Plazas</th>
+          <th scope="col">Origen</th>
+          <th scope="col">Destino</th>
+          <th scope="col">Precio</th>          
+          <th scope="col">Editar</th>          
+          <th scope="col">Eliminar</th>          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of lstViajes">
+          <th>{{v.codigo}}</th>
+          <td>{{v.numero}}</td>
+          <td>{{v.origen}}</td>
+          <td>{{v.destino}}</td>
+          <td>{{v.precio | number}}</td>
+          <td> <i routerLink="/viajes-form/{{v.codigo}}" style="color:steelblue;cursor: pointer;" class="icon-pencil2"></i></td>
+          <td><i (click)="Delete(v.codigo)" style="color:red;cursor: pointer;" class="icon-cross"></i></td>
+        </tr>   
+      </tbody>
+    </table>  
+  
+      </div>
+    </div>
+  </div>
+  
+  

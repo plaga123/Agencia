@@ -1,0 +1,96 @@
+<div class="container py-5 mt-5">
+    <div class="card">
+      <div class="container py-3">
+        <div *ngIf="id > 0; else reg">
+          <h5 class="titulo1 "><i class="icon-file-text"></i> Editar Detalle de Viajes</h5>      
+        </div>
+        <ng-template #reg>
+            <h5 class="titulo1 "><i class="icon-file-text"></i> Registrar Detalle Viajes</h5>
+        </ng-template>
+  
+      <hr class="hr">
+      
+  
+  
+    <br>
+        <div class="row">
+          <div class="col-md-6">
+              <p><strong>Cedula: </strong> {{obj.cedula}}</p>
+              <p><strong> Nombre: </strong> {{obj.nombre}}</p>
+          </div>
+          <div class="col-md-6">
+            <p><strong> Codigo: </strong> {{obj.codigo}}</p>
+            <p><strong> Origen: </strong> {{obj.origen}}</p>
+            <p><strong> Destino: </strong> {{obj.destino}}</p>
+            
+            </div>
+        </div>
+
+        <div class="row justify-content-end">
+          <div *ngIf="id > 0; else reg1">
+              <div class="col-md-2">
+                  <button (click)="Update()" class="btn btn-danger">Editar</button>
+                </div>
+          </div>
+          <ng-template #reg1>
+              <div class="col-md-2">
+                <button (click)="Insert()" class="btn btn-primary">Agregar</button>
+              </div>
+          </ng-template>
+      
+        </div>
+        <br>
+
+
+   
+
+      <div class="row">
+        <div class="col-md-6">          
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Nombre</th>  
+                    <th scope="col">Agregar</th>  
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let v of lstViajeros">
+                    <th>{{v.cedula}}</th>
+                    <td>{{v.nombre}}</td>                  
+                    <td> <i (click)="Viajeros(v)" style="color:steelblue;cursor: pointer;" class="icon-plus"></i></td>                   
+                  </tr>   
+                </tbody>
+              </table>  
+        </div>
+
+        <div class="col-md-6">          
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">N° Plazas</th>
+                    <th scope="col">Origen</th>
+                    <th scope="col">Destino</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Agregar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let v of lstViajes">
+                    <th>{{v.codigo}}</th>
+                    <td>{{v.numero}}</td>
+                    <td>{{v.origen}}</td>
+                    <td>{{v.destino}}</td>
+                    <td>{{v.precio | number}}</td>                  
+                    <td><i (click)="Viajes(v)" style="color:steelblue;cursor: pointer;" class="icon-plus"></i></td>
+                  </tr>   
+                </tbody>
+              </table> 
+        </div>
+      </div>  
+      </div>
+    </div>
+  </div>
+  
+  

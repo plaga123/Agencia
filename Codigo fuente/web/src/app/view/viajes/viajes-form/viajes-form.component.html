@@ -1,0 +1,94 @@
+<div class="container py-5 mt-5">
+    <div class="card">
+      <div class="container py-3">
+        <div *ngIf="id > 0; else reg">
+          <h5 class="titulo1 "><i class="icon-airplane"></i> Editar Viaje</h5>      
+        </div>
+        <ng-template #reg>
+            <h5 class="titulo1 "><i class="icon-airplane"></i> Registrar Viaje</h5>
+        </ng-template>
+  
+      <hr class="hr">
+      
+  
+  
+    <br>
+    <form [formGroup]="formGroup">
+  
+      <div class="row">
+  
+        <div class="col-md-2">
+          <label>Codigo</label>
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="Cedula" formControlName="codigo" readonly>          
+          </div>
+        </div>
+  
+        <div class="col-md-2">
+          <label>N° Plazas</label>
+          <div class="form-group">
+              <input type="number" class="form-control" placeholder="Numero Plaza" formControlName="numero" required>
+              <span class="help-block" *ngIf="(formGroup.get('numero').touched || formGroup.get('numero').dirty) && formGroup.get('numero').errors">
+                  <span *ngIf="formGroup.get('numero').errors.required">
+                    <p style="color: red">El campo numero es requerido</p>
+                  </span>
+                </span>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <label>Origen</label>
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="Origen" formControlName="origen" required>
+              <span class="help-block" *ngIf="(formGroup.get('origen').touched || formGroup.get('origen').dirty) && formGroup.get('origen').errors">
+                  <span *ngIf="formGroup.get('origen').errors.required">
+                    <p style="color: red">El campo origen es requerido</p>
+                  </span>
+                </span>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+            <label>Destino</label>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Destino" formControlName="destino" required>
+                <span class="help-block" *ngIf="(formGroup.get('destino').touched || formGroup.get('destino').dirty) && formGroup.get('destino').errors">
+                    <span *ngIf="formGroup.get('destino').errors.required">
+                      <p style="color: red">El campo destino es requerido</p>
+                    </span>
+                  </span>
+            </div>
+          </div>
+  
+      </div>
+
+      <div class="row">
+          <div class="col-md-3">
+              <label>Precio</label>
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Precio" formControlName="precio" required>      
+                  <span class="help-block" *ngIf="(formGroup.get('precio').touched || formGroup.get('precio').dirty) && formGroup.get('precio').errors">
+                      <span *ngIf="formGroup.get('precio').errors.required">
+                        <p style="color: red">El campo precio es requerido</p>
+                      </span>
+                    </span> 
+              </div>
+            </div>
+      </div>
+  
+  
+      <div class="row justify-content-end">
+        <div class="col-md-2">
+          <div *ngIf="id > 0; else reg1">
+              <button type="button" class="btn btn-danger" [disabled]="!formGroup.valid" (click)="Update()">Editar</button>
+          </div>
+          <ng-template #reg1>
+              <button type="button"   [disabled]="!formGroup.valid" class="btn btn-primary" (click)="Insert()">Guardar</button>
+          </ng-template>          
+        </div>
+      </div> 
+    </form>  
+      </div>
+    </div>
+  </div>
+  

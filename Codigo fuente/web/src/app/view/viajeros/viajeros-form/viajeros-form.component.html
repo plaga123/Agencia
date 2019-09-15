@@ -1,0 +1,95 @@
+<div class="container py-5 mt-5">
+  <div class="card">
+    <div class="container py-3">
+      <div *ngIf="id > 0; else reg">
+        <h5 class="titulo1 "><i class="icon-users"></i> Editar Viajero</h5>      
+      </div>
+      <ng-template #reg>
+          <h5 class="titulo1 "><i class="icon-users"></i> Registrar Viajero</h5>
+      </ng-template>
+
+    <hr class="hr">
+    
+
+
+  <br>
+  <form [formGroup]="formGroup">
+
+    <div class="row">
+
+      <div class="col-md-3">
+        <label>Cedula</label>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Cedula" formControlName="cedula" required>
+
+            <span class="help-block" *ngIf="(formGroup.get('cedula').touched || formGroup.get('cedula').dirty) && formGroup.get('cedula').errors">
+                <span *ngIf="formGroup.get('cedula').errors.required">
+                  <p style="color: red">El campo cedula es requerido</p>
+                </span>
+              </span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label>Nombre</label>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre" required>
+            <span class="help-block" *ngIf="(formGroup.get('nombre').touched || formGroup.get('nombre').dirty) && formGroup.get('nombre').errors">
+                <span *ngIf="formGroup.get('nombre').errors.required">
+                  <p style="color: red">El campo nombre es requerido</p>
+                </span>
+              </span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label>Telefono</label>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Telefono" formControlName="telefono" required>
+            <span class="help-block" *ngIf="(formGroup.get('telefono').touched || formGroup.get('telefono').dirty) && formGroup.get('telefono').errors">
+                <span *ngIf="formGroup.get('telefono').errors.required">
+                  <p style="color: red">El campo telefono es requerido</p>
+                </span>
+              </span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label>Dirección</label>
+        <div class="form-group">          
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="direccion" required></textarea>
+            <span class="help-block" *ngIf="(formGroup.get('direccion').touched || formGroup.get('direccion').dirty) && formGroup.get('direccion').errors">
+                <span *ngIf="formGroup.get('direccion').errors.required">
+                  <p style="color: red">El campo dirección es requerido</p>
+                </span>
+              </span>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-md-2">
+        <div *ngIf="id > 0; else reg1">
+            <button type="button" class="btn btn-danger" [disabled]="!formGroup.valid" (click)="Update()">Editar</button>
+        </div>
+        <ng-template #reg1>
+            <button type="button"   [disabled]="!formGroup.valid" class="btn btn-primary" (click)="Insert()">Guardar</button>
+        </ng-template>
+        
+      </div>
+    </div>
+
+
+
+  </form>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
